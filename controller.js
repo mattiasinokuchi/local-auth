@@ -13,7 +13,7 @@ module.exports = {
   home: (req, res) => {
     console.log("=> /");
     res.render('pug', {
-      title: 'Connected to Database',
+      title: 'Welcome!',
       message: 'Please login',
       showLogin: true,
       showRegistration: true
