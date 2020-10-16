@@ -7,7 +7,7 @@ require('dotenv').config();
 const express = require('express');
 
 // Import module for FCC tests
-const fccTesting = require('./freeCodeCamp/fcctesting.js');
+//const fccTesting = require('./freeCodeCamp/fcctesting.js');
 
 // Import middleware (function for processing a request) for checking previous requests from clients using cookies
 const session = require('express-session');
@@ -28,7 +28,7 @@ const app = express();
 app.set('view engine', 'pug');
 
 // Call FCC test
-fccTesting(app);
+//fccTesting(app);
 
 // Enable middleware for static files (this middleware will be called for every call to the application)
 app.use('/public', express.static(process.cwd() + '/public'));
