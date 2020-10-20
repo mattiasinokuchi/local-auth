@@ -8,7 +8,7 @@ const router = Router();
 // Import controller
 const controller = require('./controller');
 
-// Define route for requests to home page
+// Define route for requests to homepage
 router.get("/",
   controller.home
 );

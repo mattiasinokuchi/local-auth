@@ -33,7 +33,7 @@ app.use(express.json());
 // Enable middleware to parse request objects as strings or arrays (this middleware will be called for every call to the application)
 app.use(express.urlencoded({ extended: true }));
 
-// Enable middleware for session (this middleware will be called for every call to the application)
+// Enable middleware for session (called at every request)
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: true,
@@ -52,3 +52,6 @@ app.use("/", router);
 app.listen(process.env.PORT || 3000, () => {
   console.log('Listening on port ' + process.env.PORT);
 });
+
+// Make Express app available for testing
+module.exports.app = app;

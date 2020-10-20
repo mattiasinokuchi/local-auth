@@ -10,12 +10,9 @@ mongoose.connect(process.env.MONGO_URI, {
   useCreateIndex: true
 });
 
-// Get notified if database connects successfully or not
+// Get notified about database error
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
-db.once("open", function() {
-  console.log("Connected to database");
-});
 
 // Define schema (constructor) for MongoDB documents
 const userSchema = new mongoose.Schema({

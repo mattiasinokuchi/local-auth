@@ -11,7 +11,6 @@ module.exports = {
 
   // Route handler for request to home page
   home: (req, res) => {
-    console.log("=> /");
     res.render('pug', {
       title: 'Welcome!',
       message: 'Please login',
@@ -22,13 +21,11 @@ module.exports = {
 
   // Route handler for request to login
   login: (req, res) => {
-    console.log("=> /login =>");
     res.redirect('/profile');
   },
 
   // Route handler for request to profile page...
   profile: async (req, res) => {
-    console.log("=> /profile");
     if (req.isAuthenticated()) {
       // ...render the page...
       res.render('pug/profile', {
@@ -36,14 +33,12 @@ module.exports = {
       });
     } else {
       // ...or redirects unauthenticated requests to home page
-      console.log("unauthenticated request to profile page");
       res.redirect('/');
     }
   },
 
   // Route handler for request to logout...
   logout: (req, res) => {
-    console.log("/logout =>");
     // ...removes the req.user property (clears login session)...
     req.logout();
     // ...and redirects to the home page
@@ -52,14 +47,12 @@ module.exports = {
 
   // Route handler for request to register and then login...
   register: async(req, res, next) => {
-    console.log("/register =>");
     try {
       //...encrypts the password...
       const hash = bcrypt.hashSync(req.body.password, 12);
       // ...searches for the username in the database...
       const user = await Users.findOne({ username: req.body.username });
       if (user) {
-        console.log("=> username already exists =>");
         // ...redirects home if username is occupied...
         res.redirect('/');
       } else {
